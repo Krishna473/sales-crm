@@ -1,0 +1,222 @@
+/* Sales Employee Portal — reuses the site's existing theme tokens
+   (--primary, --accent, --border, --radius, etc. from index.css) so it
+   matches the rest of the app's color scheme exactly. No new colors. */
+
+.sp-root {
+  min-height: 100vh;
+  background: var(--background, #f8f7f2);
+  font-family: inherit;
+}
+
+/* ---------- Login ---------- */
+.sp-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.sp-login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card, #fff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft, 0 10px 30px -12px rgba(0,0,0,.15));
+  padding: 32px 28px;
+}
+.sp-login-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.sp-login-logo img { height: 40px; width: 40px; object-fit: contain; border-radius: calc(var(--radius) - 4px); }
+.sp-login-logo h1 { font-size: 18px; font-weight: 700; margin: 0; }
+.sp-login-logo p { font-size: 12px; color: var(--muted-foreground, #6b7280); margin: 0; }
+
+.sp-field { margin-bottom: 16px; }
+.sp-field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--foreground, #1f2937); }
+.sp-field select,
+.sp-field input {
+  width: 100%;
+  height: 42px;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--border);
+  padding: 0 12px;
+  font-size: 14px;
+  background: var(--background, #fff);
+}
+.sp-field select:focus, .sp-field input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+.sp-role-toggle { display: flex; gap: 8px; margin-bottom: 18px; }
+.sp-role-toggle button {
+  flex: 1;
+  padding: 10px 8px;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--border);
+  background: var(--background, #fff);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--foreground);
+}
+.sp-role-toggle button.active { background: var(--primary); border-color: var(--primary); color: var(--primary-foreground); }
+
+.sp-login-btn {
+  width: 100%;
+  height: 44px;
+  border-radius: calc(var(--radius) - 4px);
+  border: none;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.sp-login-btn:disabled { opacity: .5; cursor: not-allowed; }
+.sp-login-note { font-size: 11px; color: var(--muted-foreground, #6b7280); margin-top: 14px; line-height: 1.5; }
+.sp-login-error { font-size: 13px; color: var(--destructive, #dc2626); margin-bottom: 12px; }
+
+/* ---------- Layout / top nav ---------- */
+.sp-topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 20px;
+  background: var(--card, #fff);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.sp-topnav-brand { display: flex; align-items: center; gap: 10px; }
+.sp-topnav-brand img { height: 32px; width: 32px; object-fit: contain; border-radius: calc(var(--radius) - 6px); }
+.sp-topnav-brand span { font-weight: 700; font-size: 15px; }
+
+.sp-topnav-menu { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.sp-topnav-menu button {
+  padding: 8px 14px;
+  border-radius: calc(var(--radius) - 4px);
+  border: none;
+  background: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--foreground);
+  cursor: pointer;
+}
+.sp-topnav-menu button:hover { background: var(--secondary); }
+.sp-topnav-menu button.active { background: var(--primary); color: var(--primary-foreground); }
+
+.sp-topnav-right { display: flex; align-items: center; gap: 12px; }
+.sp-bell {
+  position: relative;
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--background, #fff);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+.sp-bell-dot {
+  position: absolute; top: 4px; right: 4px;
+  width: 8px; height: 8px; border-radius: 999px;
+  background: var(--destructive, #dc2626);
+}
+.sp-avatar {
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+.sp-logout-btn {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--border);
+  background: var(--background, #fff);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sp-body { padding: 20px 24px 40px; max-width: 1300px; margin: 0 auto; }
+
+/* ---------- Cards / stats (shared) ---------- */
+.sp-card {
+  background: var(--card, #fff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+.sp-card h2, .sp-card h3 { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+.sp-card .sp-muted { color: var(--muted-foreground, #6b7280); font-size: 12px; }
+
+.sp-stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 18px; }
+@media (min-width: 720px) { .sp-stats-grid { grid-template-columns: repeat(4, 1fr); } }
+.sp-stat-card { background: var(--card, #fff); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
+.sp-stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; color: var(--muted-foreground, #6b7280); }
+.sp-stat-value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+
+/* ---------- Dashboard: completion donut ---------- */
+.sp-dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 900px) { .sp-dashboard-grid { grid-template-columns: 1fr 1fr; } }
+
+.sp-donut-wrap { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.sp-donut { width: 140px; height: 140px; border-radius: 999px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.sp-donut-center { background: var(--card, #fff); border-radius: 999px; width: 96px; height: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.sp-donut-center strong { font-size: 20px; }
+.sp-donut-center span { font-size: 10px; color: var(--muted-foreground); }
+.sp-donut-legend { list-style: none; margin: 0; padding: 0; font-size: 13px; display: flex; flex-direction: column; gap: 8px; }
+.sp-donut-legend li { display: flex; align-items: center; gap: 8px; }
+.sp-legend-dot { width: 10px; height: 10px; border-radius: 999px; display: inline-block; }
+
+/* ---------- Task list / plan tabs ---------- */
+.sp-plan-tabs { display: flex; gap: 6px; }
+.sp-plan-tabs button {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--background, #fff);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--foreground);
+}
+.sp-plan-tabs button.active { background: var(--accent); border-color: var(--accent); color: var(--accent-foreground, #1f2937); }
+
+.sp-task-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+.sp-task-form input, .sp-task-form select { height: 40px; border-radius: calc(var(--radius) - 4px); border: 1px solid var(--border); padding: 0 12px; font-size: 14px; background: var(--background, #fff); }
+.sp-task-form input[type="text"], .sp-task-form input:not([type]) { flex: 1 1 220px; }
+
+.sp-task-list { display: flex; flex-direction: column; margin-top: 8px; }
+.sp-task-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.sp-task-row:first-child { border-top: none; }
+.sp-task-title { font-weight: 600; margin: 0 0 2px; font-size: 14px; }
+.sp-status-pills { display: flex; gap: 6px; }
+.sp-status-pill { border: 1px solid var(--border); background: var(--background, #fff); color: var(--foreground); border-radius: 999px; padding: 6px 12px; font-size: 11px; cursor: pointer; }
+.sp-status-pill.active { background: var(--primary); border-color: var(--primary); color: var(--primary-foreground); font-weight: 600; }
+
+/* ---------- Profile page ---------- */
+.sp-profile-header { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+.sp-profile-avatar { width: 84px; height: 84px; border-radius: 999px; background: var(--secondary); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: var(--secondary-foreground); }
+.sp-profile-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 720px) { .sp-profile-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .sp-profile-grid { grid-template-columns: repeat(4, 1fr); } }
+.sp-profile-field label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .02em; color: var(--muted-foreground); margin-bottom: 4px; }
+.sp-profile-field input, .sp-profile-field select { width: 100%; height: 38px; border-radius: calc(var(--radius) - 4px); border: 1px solid var(--border); padding: 0 10px; font-size: 13px; background: var(--background, #fff); }
+.sp-profile-field input:disabled { background: var(--secondary); color: var(--muted-foreground); }
+.sp-profile-section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--muted-foreground); margin: 22px 0 10px; }
+.sp-file-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.sp-file-field { flex: 1 1 220px; }
+.sp-profile-actions { display: flex; gap: 10px; margin-top: 20px; }
+
+/* ---------- Team view ---------- */
+.sp-coverage-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 900px) { .sp-coverage-grid { grid-template-columns: 1fr 1fr; } }
+.sp-pincode-pills { display: flex; flex-wrap: wrap; gap: 8px; }
